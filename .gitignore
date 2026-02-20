@@ -1,0 +1,33 @@
+# Next.js
+.next/
+/out/
+
+# Dependencies
+node_modules/
+
+# TypeScript
+*.tsbuildinfo
+
+# ESLint
+.eslintcache
+
+# macOS
+.DS_Store
+
+# npm
+*.log
+npm-debug.log*
+.npm/
+
+# dotenv
+.env.local
+.env.*.local
+
+# VSCode
+.vscode/
+
+# Editor
+.editorconfig
+
+# Temp files
+.gemini/
