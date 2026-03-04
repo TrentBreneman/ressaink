@@ -99,6 +99,16 @@ export default function BookingForm() {
     }
   };
 
+  interface InputFieldProps {
+    label: string;
+    name: string;
+    type?: string;
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    error?: string;
+    placeholder?: string;
+  }
+
   const InputField = ({
     label,
     name,
@@ -107,7 +117,7 @@ export default function BookingForm() {
     onChange,
     error,
     placeholder,
-  }: any) => (
+  }: InputFieldProps) => (
     <div className="mb-4">
       <label htmlFor={name} className="block text-sm font-bold mb-2">
         {label}
@@ -125,6 +135,15 @@ export default function BookingForm() {
     </div>
   );
 
+  interface TextAreaFieldProps {
+    label: string;
+    name: string;
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+    error?: string;
+    placeholder?: string;
+  }
+
   const TextAreaField = ({
     label,
     name,
@@ -132,7 +151,7 @@ export default function BookingForm() {
     onChange,
     error,
     placeholder,
-  }: any) => (
+  }: TextAreaFieldProps) => (
     <div className="mb-4">
       <label htmlFor={name} className="block text-sm font-bold mb-2">
         {label}
@@ -150,7 +169,13 @@ export default function BookingForm() {
     </div>
   );
 
-  const FileInputField = ({ label, name, onChange }: any) => (
+  interface FileInputFieldProps {
+    label: string;
+    name: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  }
+
+  const FileInputField = ({ label, name, onChange }: FileInputFieldProps) => (
     <div className="mb-4">
       <label htmlFor={name} className="block text-sm font-bold mb-2">
         {label}

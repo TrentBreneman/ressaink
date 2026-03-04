@@ -44,7 +44,7 @@ export default function Testimonials() {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <p className="text-lg italic mb-4">"{testimonial.quote}"</p>
+              <p className="text-lg italic mb-4">&quot;{testimonial.quote}&quot;</p>
               <p className="text-white font-bold">- {testimonial.author}</p>
             </motion.div>
           ))}
