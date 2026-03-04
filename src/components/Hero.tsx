@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -14,16 +14,22 @@ export default function Hero() {
       />
       <div className="relative z-10 p-6">
         <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter mb-4">
-          Ressa
+          Reesa
         </h1>
         <p className="text-xl md:text-2xl font-light mb-8">
           Fine Line & Blackwork Tattoo Artist
         </p>
         <div className="space-x-4">
-          <Link href="#booking" className="bg-white text-black font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition-colors">
+          <Link
+            href="#booking"
+            className="bg-white text-black font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition-colors"
+          >
             Book Now
           </Link>
-          <Link href="#portfolio" className="border border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-black transition-colors">
+          <Link
+            href="#portfolio"
+            className="border border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-black transition-colors"
+          >
             View Portfolio
           </Link>
         </div>
