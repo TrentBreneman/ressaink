@@ -1,6 +1,6 @@
-# Ressa Ink Portfolio
+# Reesa Ink Portfolio
 
-A modern, high-performance portfolio website for **Ressa**, a Fine Line & Blackwork tattoo artist. This project showcases Ressa's artistic vision, professional experience, and an extensive portfolio of work, while providing a seamless booking experience for clients.
+A modern, high-performance portfolio website for **Reesa**, a Fine Line & Blackwork tattoo artist. This project showcases Ressa's artistic vision, professional experience, and an extensive portfolio of work, while providing a seamless booking experience for clients.
 
 ## 🚀 Built With
 

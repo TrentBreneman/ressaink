@@ -1,34 +1,41 @@
 "use client";
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function BookingForm() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    description: '',
-    placement: '',
-    budget: '',
+    name: "",
+    email: "",
+    phone: "",
+    description: "",
+    placement: "",
+    budget: "",
     referenceImage: null as File | null,
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState('');
+  const [submitMessage, setSubmitMessage] = useState("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
     if (errors[name]) {
-      setErrors((prevErrors) => ({ ...prevErrors, [name]: '' }));
+      setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
     }
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setFormData((prevData) => ({ ...prevData, referenceImage: e.target.files![0] }));
+      setFormData((prevData) => ({
+        ...prevData,
+        referenceImage: e.target.files![0],
+      }));
     } else {
       setFormData((prevData) => ({ ...prevData, referenceImage: null }));
     }
@@ -36,16 +43,18 @@ export default function BookingForm() {
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
-    if (!formData.name.trim()) newErrors.name = 'Name is required';
+    if (!formData.name.trim()) newErrors.name = "Name is required";
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email is invalid';
+      newErrors.email = "Email is invalid";
     }
-    if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
-    if (!formData.description.trim()) newErrors.description = 'Tattoo description is required';
-    if (!formData.placement.trim()) newErrors.placement = 'Tattoo placement is required';
-    if (!formData.budget.trim()) newErrors.budget = 'Budget is required';
+    if (!formData.phone.trim()) newErrors.phone = "Phone number is required";
+    if (!formData.description.trim())
+      newErrors.description = "Tattoo description is required";
+    if (!formData.placement.trim())
+      newErrors.placement = "Tattoo placement is required";
+    if (!formData.budget.trim()) newErrors.budget = "Budget is required";
     return newErrors;
   };
 
@@ -58,34 +67,57 @@ export default function BookingForm() {
     }
 
     setIsSubmitting(true);
-    setSubmitMessage('');
+    setSubmitMessage("");
 
     // Simulate API call
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate network delay
-      console.log('Form Data Submitted:', formData);
-      setSubmitMessage('Booking request sent successfully! Ressa will be in touch soon.');
+      console.log("Form Data Submitted:", formData);
+      setSubmitMessage(
+        "Booking request sent successfully! Reesa will be in touch soon.",
+      );
       setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        description: '',
-        placement: '',
-        budget: '',
+        name: "",
+        email: "",
+        phone: "",
+        description: "",
+        placement: "",
+        budget: "",
         referenceImage: null,
       });
-      if (document.getElementById('referenceImage')) {
-        (document.getElementById('referenceImage') as HTMLInputElement).value = '';
+      if (document.getElementById("referenceImage")) {
+        (document.getElementById("referenceImage") as HTMLInputElement).value =
+          "";
       }
     } catch (error) {
-      setSubmitMessage('There was an error sending your request. Please try again.');
-      console.error('Booking form submission error:', error);
+      setSubmitMessage(
+        "There was an error sending your request. Please try again.",
+      );
+      console.error("Booking form submission error:", error);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const InputField = ({ label, name, type = 'text', value, onChange, error, placeholder }: any) => (
+  interface InputFieldProps {
+    label: string;
+    name: string;
+    type?: string;
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    error?: string;
+    placeholder?: string;
+  }
+
+  const InputField = ({
+    label,
+    name,
+    type = "text",
+    value,
+    onChange,
+    error,
+    placeholder,
+  }: InputFieldProps) => (
     <div className="mb-4">
       <label htmlFor={name} className="block text-sm font-bold mb-2">
         {label}
@@ -97,13 +129,29 @@ export default function BookingForm() {
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className={`w-full p-3 rounded bg-gray-700 border ${error ? 'border-red-500' : 'border-gray-600'} focus:outline-none focus:ring-2 focus:ring-white`}
+        className={`w-full p-3 rounded bg-gray-700 border ${error ? "border-red-500" : "border-gray-600"} focus:outline-none focus:ring-2 focus:ring-white`}
       />
       {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
     </div>
   );
 
-  const TextAreaField = ({ label, name, value, onChange, error, placeholder }: any) => (
+  interface TextAreaFieldProps {
+    label: string;
+    name: string;
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+    error?: string;
+    placeholder?: string;
+  }
+
+  const TextAreaField = ({
+    label,
+    name,
+    value,
+    onChange,
+    error,
+    placeholder,
+  }: TextAreaFieldProps) => (
     <div className="mb-4">
       <label htmlFor={name} className="block text-sm font-bold mb-2">
         {label}
@@ -115,13 +163,19 @@ export default function BookingForm() {
         onChange={onChange}
         placeholder={placeholder}
         rows={4}
-        className={`w-full p-3 rounded bg-gray-700 border ${error ? 'border-red-500' : 'border-gray-600'} focus:outline-none focus:ring-2 focus:ring-white`}
+        className={`w-full p-3 rounded bg-gray-700 border ${error ? "border-red-500" : "border-gray-600"} focus:outline-none focus:ring-2 focus:ring-white`}
       ></textarea>
       {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
     </div>
   );
 
-  const FileInputField = ({ label, name, onChange }: any) => (
+  interface FileInputFieldProps {
+    label: string;
+    name: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  }
+
+  const FileInputField = ({ label, name, onChange }: FileInputFieldProps) => (
     <div className="mb-4">
       <label htmlFor={name} className="block text-sm font-bold mb-2">
         {label}
@@ -147,8 +201,13 @@ export default function BookingForm() {
       transition={{ duration: 0.6 }}
     >
       <div className="container mx-auto px-6 max-w-2xl">
-        <h2 className="text-4xl font-bold text-center mb-12">Book Your Tattoo</h2>
-        <form onSubmit={handleSubmit} className="bg-gray-800 p-8 rounded-lg shadow-lg">
+        <h2 className="text-4xl font-bold text-center mb-12">
+          Book Your Tattoo
+        </h2>
+        <form
+          onSubmit={handleSubmit}
+          className="bg-gray-800 p-8 rounded-lg shadow-lg"
+        >
           <InputField
             label="Name"
             name="name"
@@ -211,11 +270,13 @@ export default function BookingForm() {
             className="w-full bg-white text-black font-bold py-3 px-4 rounded-full hover:bg-gray-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Sending Request...' : 'Submit Booking Request'}
+            {isSubmitting ? "Sending Request..." : "Submit Booking Request"}
           </button>
 
           {submitMessage && (
-            <p className={`mt-4 text-center ${submitMessage.includes('successfully') ? 'text-green-500' : 'text-red-500'}`}>
+            <p
+              className={`mt-4 text-center ${submitMessage.includes("successfully") ? "text-green-500" : "text-red-500"}`}
+            >
               {submitMessage}
             </p>
           )}

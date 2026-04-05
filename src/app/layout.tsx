@@ -5,15 +5,17 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Ressa - Fine Line & Blackwork Tattoo Artist",
-  description: "Portfolio and booking for Ressa, a fine line and blackwork tattoo artist.",
+  title: "Reesa - Fine Line & Blackwork Tattoo Artist",
+  description:
+    "Portfolio and booking for Reesa, a fine line and blackwork tattoo artist.",
   openGraph: {
-    title: "Ressa - Fine Line & Blackwork Tattoo Artist",
-    description: "Portfolio and booking for Ressa, a fine line and blackwork tattoo artist.",
+    title: "Reesa - Fine Line & Blackwork Tattoo Artist",
+    description:
+      "Portfolio and booking for Reesa, a fine line and blackwork tattoo artist.",
     type: "website",
     locale: "en_US",
-    url: "https://ressaink.com", // Replace with actual domain
-    siteName: "RessaInk",
+    url: "https://Reesaink.com", // Replace with actual domain
+    siteName: "ReesaInk",
   },
 };
 
