@@ -69,25 +69,43 @@ export default function BookingForm() {
     setIsSubmitting(true);
     setSubmitMessage("");
 
-    // Simulate API call
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate network delay
-      console.log("Form Data Submitted:", formData);
-      setSubmitMessage(
-        "Booking request sent successfully! Reesa will be in touch soon.",
-      );
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        description: "",
-        placement: "",
-        budget: "",
-        referenceImage: null,
+      const data = new FormData();
+      data.append("name", formData.name);
+      data.append("email", formData.email);
+      data.append("phone", formData.phone);
+      data.append("description", formData.description);
+      data.append("placement", formData.placement);
+      data.append("budget", formData.budget);
+      if (formData.referenceImage) {
+        data.append("referenceImage", formData.referenceImage);
+      }
+
+      const response = await fetch("/api/booking", {
+        method: "POST",
+        body: data,
       });
-      if (document.getElementById("referenceImage")) {
-        (document.getElementById("referenceImage") as HTMLInputElement).value =
-          "";
+
+      if (response.ok) {
+        setSubmitMessage(
+          "Booking request sent successfully! Reesa will be in touch soon.",
+        );
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          description: "",
+          placement: "",
+          budget: "",
+          referenceImage: null,
+        });
+        if (document.getElementById("referenceImage")) {
+          (document.getElementById("referenceImage") as HTMLInputElement).value =
+            "";
+        }
+      } else {
+        const result = await response.json();
+        throw new Error(result.error || "Failed to send request");
       }
     } catch (error) {
       setSubmitMessage(

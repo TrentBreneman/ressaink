@@ -17,7 +17,7 @@ export default function Hero() {
           Reesa 
         </h1>
         <p className="text-xl md:text-2xl font-light mb-8">
-          Fine Line & Blackwork Tattoo Artist
+          Fine Line, Black/Grey, Color Realisism, Portraits Tattoo Artist
         </p>
         <div className="space-x-4">
           <Link

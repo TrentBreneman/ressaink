@@ -38,12 +38,12 @@ export default function About() {
           >
             <h2 className="text-4xl font-bold mb-4">About Reesa</h2>
             <p className="text-lg text-gray-300 leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur.
+              I specialize in fine line, color tattoos, black and gray and
+              various styles balancing delicacy with structure, softness with
+              impact. Whether it’s a minimal, intricate design or a bold,
+              expressive piece, my focus is always on clean execution,
+              thoughtful placement, and creating work that feels elevated and
+              timeless.
             </p>
           </motion.div>
         </div>

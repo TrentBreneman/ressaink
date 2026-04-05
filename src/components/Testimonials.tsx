@@ -6,18 +6,18 @@ export default function Testimonials() {
   const testimonials = [
     {
       quote:
-        "Reesa brought my vision to life perfectly! The detail in her fine line work is incredible. I couldn't be happier.",
-      author: "Client A",
+        "I got my first tattoo at Certified with Resa Klingenberg. My experience was awesome from beginning to end. My initial consultation to go over my ideas was quick and easy. On the day of my appointment, we made a couple revisions and then it was a go. The work went fast, Resa was fun to talk to and I LOVE MY TATTOO!! Highly recommend!",
+      author: "Julie M.",
     },
     {
       quote:
         "Professional, clean, and a true artist. My blackwork piece is stunning and healed beautifully. Highly recommend!",
-      author: "Client B",
+      author: "Anonymous",
     },
     {
       quote:
         "A fantastic experience from start to finish. Reesa's talent speaks for itself, and her studio is super welcoming.",
-      author: "Client C",
+      author: "Anonymous",
     },
   ];
 
